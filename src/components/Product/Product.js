@@ -1,15 +1,28 @@
-import React, { useState } from 'react';
+import React, { useState, useReducer } from 'react';
 import PropTypes from 'prop-types';
 import { products, products2 } from '../../data/products';
 import { getTotal, add, remove } from '../../services/operations';
 
+function reducer(state, action) {
+  if (action.type === 'add') {
+    return add(state, action.product)
+  } else if (action.type === 'remove'&&state.total > 0) {
+     return remove(state, action.product)
+  } else {
+    return state
+  }
+}
 function Product() {
-  const [ cart, setCart] = useState(
+/*   const [ cart, setCart] = useState(
     {
       cart: [],
       total: 0
     }
-);
+); */
+  const [cart, setCart] = useReducer(reducer, {
+    cart: [],
+    total: 0
+  });
   
   return (
     <>
@@ -24,9 +37,15 @@ function Product() {
           </div>
           <div className="product-buttons">
           <button onClick={() => {
-            add(product, cart, setCart)
+            setCart({
+              product: product,
+              type: 'add'
+            })
           }}><span>Add</span></button>
-          <button onClick={() => remove(product, cart, setCart)}><span>Remove</span></button>
+          <button onClick={() => setCart({
+            product: product,
+            type: 'remove'
+          })}><span>Remove</span></button>
           </div>
           </div>
         )
