@@ -25,8 +25,8 @@ function Product() {
           <div className="product-buttons">
           <button onClick={() => {
             add(product, cart, setCart)
-          }}>Add</button>
-          <button onClick={() => remove(product, cart, setCart)}>Remove</button>
+          }}><span>Add</span></button>
+          <button onClick={() => remove(product, cart, setCart)}><span>Remove</span></button>
           </div>
           </div>
         )

@@ -11,9 +11,22 @@
   @include poppins-regular();
 }
 
-body {
+.App {
   padding-left: 2vw;
   padding-right: 2vw;
+}
+
+header {
+  @include poppins-bold();
+  background-color: rgb(254, 189, 105);
+  height: 5vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  & a {
+    color: black;
+  }
+  border-bottom: solid 1px;
 }
 
 .products-wrapper {
@@ -49,6 +62,9 @@ body {
         height: 25%;
         padding-left: 0.3vw;
         padding-right: 0.3vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
     }
   }
