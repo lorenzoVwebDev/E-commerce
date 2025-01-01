@@ -1,5 +1,5 @@
 import Product from '../Product/Product.js';
-import Header from '../Header.js';
+import Header from '../Header/Header.js';
 
 function App() {
   return (

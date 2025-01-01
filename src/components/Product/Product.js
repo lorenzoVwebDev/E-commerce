@@ -12,17 +12,14 @@ function reducer(state, action) {
   }
 }
 function Product() {
-/*   const [ cart, setCart] = useState(
-    {
-      cart: [],
-      total: 0
-    }
-); */
+  const [products, setProducts] = useState(products2)
   const [cart, setCart] = useReducer(reducer, {
     cart: [],
     total: 0
   });
+
   
+
   return (
     <>
     <div>Shopping Cart: {cart.cart?.length}</div>
