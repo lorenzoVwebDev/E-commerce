@@ -1,5 +1,4 @@
 import React, { useState, useReducer } from 'react';
-import PropTypes from 'prop-types';
 import { products, products2 } from '../../data/products';
 import { getTotal, add, remove } from '../../services/operations';
 
@@ -31,7 +30,9 @@ function Product() {
     <div className="products-wrapper">
       {products2.map(product => {
         return (
-          <div className="product-box">
+          <div className="product-box" key={product.id}>
+          <h4>{product.name}</h4>
+          <div className="product-content">
           <div className="product-image">
             <img src={product.image}/>
           </div>
@@ -46,6 +47,7 @@ function Product() {
             product: product,
             type: 'remove'
           })}><span>Remove</span></button>
+          </div>
           </div>
           </div>
         )
