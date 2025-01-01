@@ -10,7 +10,7 @@ function Header() {
     const param = input.target.children[0].value;
     param != '' ? window.location.href= `/?search=${param}` : window.location.href = '/';
   }
-  
+  //hello
   return (
     <div className="main-header">
       <div className="main-header-left-section">
