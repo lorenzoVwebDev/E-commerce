@@ -10,7 +10,7 @@ export const getTotal = (cart) => {
 export const add = (product, cart, setCart) => {
   let bool = false
   cart.cart.forEach(object => {
-    if (product.name === object.name) {
+    if (product.id === object.id) {
       return bool = true;
     }
   })
@@ -20,9 +20,9 @@ export const add = (product, cart, setCart) => {
     setCart( state => {
       return {
         cart: [...state.cart.filter(object => {
-          return object.name != product.name
+          return object.id != product.id
         }), product],
-        total: state.total + product.price
+        total: state.total + product.priceCents
       }
     })
     bool = false;
@@ -30,9 +30,9 @@ export const add = (product, cart, setCart) => {
     setCart( state => {
       return {
         cart: [...state.cart.filter(object => {
-          return object.name != product.name
+          return object.id != product.id
         }), product] ,
-        total: state.total + product.price
+        total: state.total + product.priceCents
       }
     } )
   }
@@ -41,34 +41,34 @@ export const add = (product, cart, setCart) => {
 //remove
 export const remove = (product, cart, setCart) => {
   cart.cart.forEach(purchasedProduct => {
-    if (purchasedProduct.name === product.name && purchasedProduct?.quantity > 0) {
+    if (purchasedProduct.id === product.id && purchasedProduct?.quantity > 0) {
 
       purchasedProduct.quantity -= 1;
       if (purchasedProduct.quantity === 0) {
         setCart(state => {
           return {
             cart: [...state.cart.filter(object => {
-              return object.name != product.name
+              return object.id != product.id
             })],
-            total: state.total > 0 ? state.total - product.price : 0
+            total: state.total > 0 ? state.total - product.priceCents : 0
           }
         })
       } else {
         setCart(state => {
           return {
             cart: [...state.cart.filter(object => {
-              return object.name != product.name
+              return object.id != product.id
             }), purchasedProduct],
-            total: state.total > 0 ? state.total - product.price : 0
+            total: state.total > 0 ? state.total - product.priceCents : 0
           }
         })
       }
 
-    } else if (purchasedProduct.name === product.name) {
+    } else if (purchasedProduct.id === product.id) {
       setCart( state => {
         return {
           cart: state.cart.filter(object =>  object != product),
-          total: state.total > 0 ? state.total - product.price : 0
+          total: state.total > 0 ? state.total - product.priceCents : 0
         }
     })
     }
