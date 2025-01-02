@@ -10,12 +10,12 @@ function Header() {
     const param = input.target.children[0].value;
     param != '' ? window.location.href= `/?search=${param}` : window.location.href = '/';
   }
-  
+  //hello
   return (
     <div className="main-header">
       <div className="main-header-left-section">
         <a href="index.html">
-          <img src="images/viganegologo.png"/>
+          <img src="https://i.ibb.co/3h6Kks9/viganegologo.jpg"/>
         </a>
       </div>
 
@@ -26,7 +26,7 @@ function Header() {
         <input type="text" placeholder='Search your product here!' />
         </form>
         <button type="submit" form="search-form">
-          <img src="images/icons/search-icon.png"/>
+          <img src="https://i.ibb.co/Gtcdh6F/search-icon.png"/>
         </button>
       </div>
 

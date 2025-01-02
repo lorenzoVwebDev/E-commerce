@@ -78,27 +78,29 @@ export const remove = (product, cart, setCart) => {
 
 export const add = (state, product) => {
   let bool = false
-  state.cart.forEach(object => {
+  const renderState = state;
+  renderState.cart.forEach(object => {
     if (product.id === object.id) {
       return bool = true;
     }
   })
 
   if (bool) {
-    product.quantity ? product.quantity += 1 : product.quantity = 2
+    bool = false;
+    product.quantity += 1;
       return {
-        cart: [...state.cart.filter(object => {
+        cart: [...renderState.cart.filter(object => {
           return object.id != product.id
         }), product],
-        total: state.total + product.priceCents
+        total: renderState.total + product.priceCents
       }
-    bool = false;
   } else {
+      product.quantity = 1;
       return {
-        cart: [...state.cart.filter(object => {
+        cart: [...renderState.cart.filter(object => {
           return object.id != product.id
         }), product] ,
-        total: state.total + product.priceCents
+        total: renderState.total + product.priceCents
       }
     } 
 }
