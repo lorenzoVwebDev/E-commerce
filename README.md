@@ -1,5 +1,13 @@
-# PROJECT IN DEVELOPMENT
-# Product page
+
+# Product Page
+  An e-commerce page that uses multiple react features.
+## Features
+- [Usage of react-router-dom to link components together](https://github.com/lorenzoVwebDev/E-commerce/blob/master/src/components/App/App.js)
+- [createContext hook used to share data among components overcoming parent/children relation's boundaries](https://github.com/lorenzoVwebDev/E-commerce/blob/master/src/components/ProductsContext/ProductsContext.js)
+- [Params used to look for specific products with the search input](https://github.com/lorenzoVwebDev/E-commerce/blob/master/src/components/Product/Product.js)
+- [Managing the cart (state) in a complex way with useReducer calling functions in MVC](https://github.com/lorenzoVwebDev/E-commerce/blob/master/src/components/Product/Product.js)
+- [Props' inheritation to render the cart](https://github.com/lorenzoVwebDev/E-commerce/blob/master/src/components/Cart/Cart.js)
+- [Sass implementation](https://github.com/lorenzoVwebDev/E-commerce/blob/master/src/_mixin%26variables.scss)
 
 --
 ## Features
