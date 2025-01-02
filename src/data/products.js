@@ -1,19 +1,3 @@
-/* export const products = [
-  {
-    emoji: '🍦',
-    name: 'ice cream',
-    price: 5
-  }, {
-    emoji: '🍩',
-    name: 'donut',
-    price: 2.5
-  }, {
-    emoji: '🍉',
-    name: 'watermelon',
-    price: 4
-  }
-] */
-
 export const products = [{
   id: "1",
   image: "https://i.ibb.co/gdt9Ky3/backpack.jpg",

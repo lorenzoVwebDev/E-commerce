@@ -1,7 +1,9 @@
 import React, { useState, useReducer, useContext } from 'react';
+import { Link, Routes, Route} from 'react-router-dom';
 import ProductsContext from '../ProductsContext/ProductsContext.js'
 import { products } from '../../data/products';
 import { getTotal, add, remove } from '../../services/operations';
+import Cart from '../Cart/Cart.js'
 
 
 function reducer(state, action) {
@@ -46,12 +48,19 @@ function Product() {
     }
   }
 
-  console.log(filterProducts(params, products))
-  
-
   return (
     <>
+    <div>
     <div>Shopping Cart: {cart.cart?.length}</div>
+    <h3>Click here to watch your cart 👉🏻
+      <Link to="cart">🛒</Link>
+     <Routes>
+      <Route path="/cart" element={<Cart
+        shopCart={cart}
+      />}></Route>
+    </Routes> 
+    </h3>
+    </div>
     <div>Total: {getTotal(cart)}€</div>
     <div className="products-wrapper">
       {
@@ -72,10 +81,12 @@ function Product() {
               type: 'add'
             })
           }}><span>Add</span></button>
-          <button onClick={() => setCart({
+          <button onClick={() => {
+            setCart({
             product: product,
             type: 'remove'
-          })}><span>Remove</span></button>
+          })
+          }}><span>Remove</span></button>
           </div>
           </div>
           </div>

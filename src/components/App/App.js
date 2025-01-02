@@ -1,11 +1,8 @@
+import { BrowserRouter} from 'react-router-dom';
 import Product from '../Product/Product.js';
 import Header from '../Header/Header.js';
 import ParamsContext from '../ProductsContext/ProductsContext.js'
 import { products2 } from '../../data/products.js';
-
-
-
-
 
 function App() {
   const getParams = () => {
@@ -18,6 +15,7 @@ function App() {
   return (
     <>
     <header>Git repository 👉🏻<a href="https://github.com/lorenzoVwebDev/E-commerce">E-commerce</a></header>
+    <BrowserRouter>
     <ParamsContext.Provider
       value={getParams()}
     >
@@ -26,6 +24,7 @@ function App() {
       <Product/>
     </div>
     </ParamsContext.Provider>
+    </BrowserRouter>
     </>
   );
 }
