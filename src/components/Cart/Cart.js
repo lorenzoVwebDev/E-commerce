@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import React from 'react';
 
 function Cart({
@@ -11,7 +12,7 @@ function Cart({
 
   return (
    <div className="cart-wrapper">
-      {
+      { cart.length > 0 ?
         cart.map(product => {
           return (<div className="cart-box">
             <div className="cart-box-image">
@@ -20,8 +21,12 @@ function Cart({
             <h6>{product.name} <span>Quantity: {product.quantity}</span></h6>
           </div>
           )
-        })
+        }) : <h3 style={{
+          color: 'red',
+          fontStyle: 'italic'
+        }}>Cart is empty!</h3>
       }  
+      <Link to="/"><button>Close the cart</button></Link>
     </div> 
   )
 }

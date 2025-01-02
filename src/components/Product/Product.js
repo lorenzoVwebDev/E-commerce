@@ -5,7 +5,7 @@ import { products } from '../../data/products';
 import { getTotal, add, remove } from '../../services/operations';
 import Cart from '../Cart/Cart.js'
 
-
+let bool = false;
 function reducer(state, action) {
   if (action.type === 'add') {
     return add(state, action.product)
@@ -51,9 +51,17 @@ function Product() {
   return (
     <>
     <div>
-    <div>Shopping Cart: {cart.cart?.length}</div>
+    <div>Shopping Cart Products: {cart.cart?.length}</div>
     <h3>Click here to watch your cart 👉🏻
-      <Link to="cart">🛒</Link>
+      <Link to={bool ?'/':'/cart'} onClick={() => {
+        if (bool) {
+          bool = false
+        } else {
+          bool = true
+        }
+        console.log(bool)
+      }
+      }>🛒</Link>
      <Routes>
       <Route path="/cart" element={<Cart
         shopCart={cart}

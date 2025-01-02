@@ -1,4 +1,4 @@
-import { BrowserRouter} from 'react-router-dom';
+import { BrowserRouter, Routes, Route} from 'react-router-dom';
 import Product from '../Product/Product.js';
 import Header from '../Header/Header.js';
 import ParamsContext from '../ProductsContext/ProductsContext.js'
@@ -21,7 +21,7 @@ function App() {
     >
     <Header/>
     <div className="App">
-      <Product/>
+    <Product></Product>
     </div>
     </ParamsContext.Provider>
     </BrowserRouter>
