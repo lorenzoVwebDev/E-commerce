@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import React from 'react';
+import PropTypes from 'prop-types';
 
 function Cart({
   shopCart
@@ -14,7 +15,7 @@ function Cart({
    <div className="cart-wrapper">
       { cart.length > 0 ?
         cart.map(product => {
-          return (<div className="cart-box">
+          return (<div className="cart-box" key={product.id}>
             <div className="cart-box-image">
               <img src={product.image}/>
             </div>
@@ -32,3 +33,7 @@ function Cart({
 }
 
 export default Cart;
+
+Cart.propTypes = {
+  shopCart: PropTypes.object.isRequired
+}

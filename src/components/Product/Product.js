@@ -5,7 +5,6 @@ import { products } from '../../data/products';
 import { getTotal, add, remove } from '../../services/operations';
 import Cart from '../Cart/Cart.js'
 
-let bool = false;
 function reducer(state, action) {
   if (action.type === 'add') {
     return add(state, action.product)
@@ -15,8 +14,8 @@ function reducer(state, action) {
     return state
   }
 }
+
 function Product() {
-/*   const [products, setProducts] = useState(products2) */
   const [cart, setCart] = useReducer(reducer, {
     cart: [],
     total: 0
@@ -43,7 +42,6 @@ function Product() {
         return filteredProducts;
       }
     } else {
-/*       console.log('products 2') */
       return products;
     }
   }
@@ -53,15 +51,7 @@ function Product() {
     <div>
     <div>Shopping Cart Products: {cart.cart?.length}</div>
     <h3>Click here to watch your cart 👉🏻
-      <Link to={bool ?'/':'/cart'} onClick={() => {
-        if (bool) {
-          bool = false
-        } else {
-          bool = true
-        }
-        console.log(bool)
-      }
-      }>🛒</Link>
+      <Link to={'/cart'}>🛒</Link>
      <Routes>
       <Route path="/cart" element={<Cart
         shopCart={cart}
