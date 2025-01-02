@@ -132,12 +132,17 @@ header {
         display: flex;
         justify-content: center;
         align-items: center;
+        background-color: $amazon-orange;
+        border: none;
+        border-radius: 25px;
+        box-shadow: 1px 1px 8px gray;
+        cursor: pointer;
       }
     }
   }
   }
 }
-
+.cart-wrapper {
 .cart-box {
   display: flex;
   gap: 1.2vw;
@@ -154,7 +159,21 @@ header {
     }
   }
 }
-
+& button {
+  @include poppins-regular();
+  height: 25%;
+  padding-left: 0.5vw;
+  padding-right: 0.5vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $amazon-orange;
+  border: none;
+  border-radius: 25px;
+  box-shadow: 1px 1px 8px gray;
+  cursor: pointer;
+}
+}
 
 
 @import './media';
