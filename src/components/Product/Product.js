@@ -1,6 +1,8 @@
-import React, { useState, useReducer } from 'react';
-import { products, products2 } from '../../data/products';
+import React, { useState, useReducer, useContext } from 'react';
+import ProductsContext from '../ProductsContext/ProductsContext.js'
+import { products } from '../../data/products';
 import { getTotal, add, remove } from '../../services/operations';
+
 
 function reducer(state, action) {
   if (action.type === 'add') {
@@ -12,12 +14,39 @@ function reducer(state, action) {
   }
 }
 function Product() {
-  const [products, setProducts] = useState(products2)
+/*   const [products, setProducts] = useState(products2) */
   const [cart, setCart] = useReducer(reducer, {
     cart: [],
     total: 0
   });
+  const params = useContext(ProductsContext);
 
+  function filterProducts(params, products) {
+    if (params) {
+      const filteredProducts = products.filter(product => {
+        let searchKeywords;
+
+        product.keywords.forEach(keyword => {
+           
+          if (keyword.toLowerCase().includes(params.toLowerCase())) {
+            return searchKeywords = true;
+          } 
+        });
+
+        return product.name.toLowerCase().includes(params.toLowerCase()) || searchKeywords;
+      })
+      if (filteredProducts.length === 0 ) {
+        return 'No products have been found!';
+      } else {
+        return filteredProducts;
+      }
+    } else {
+/*       console.log('products 2') */
+      return products;
+    }
+  }
+
+  console.log(filterProducts(params, products))
   
 
   return (
@@ -25,7 +54,10 @@ function Product() {
     <div>Shopping Cart: {cart.cart?.length}</div>
     <div>Total: {getTotal(cart)}€</div>
     <div className="products-wrapper">
-      {products2.map(product => {
+      {
+      Array.isArray(filterProducts(params, products)) ?
+      
+      filterProducts(params, products).map(product => {
         return (
           <div className="product-box" key={product.id}>
           <h4>{product.name}</h4>
@@ -48,7 +80,7 @@ function Product() {
           </div>
           </div>
         )
-      })}
+      }) : <h2>{filterProducts(params, products)}</h2>}
     </div>
     </>
   ) 
